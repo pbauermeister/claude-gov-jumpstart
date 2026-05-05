@@ -28,9 +28,9 @@ Execution.
 
 ### 1.4 Goal
 
-1. New kit-provided files: `README.md` (placeholder), `GOVERNANCE-KIT.md` (transient adaptation checklist), sample `AI-AUGMENTED-ENGINEERING-CHARTER.md`.
+1. New kit-provided files: `README.md` (placeholder), `GOVERNANCE-KIT.md` (transient adaptation checklist).
 2. `governance/devlog/` populated with a `README.md` marker; CLAUDE.md devlog rule cleaned (drop `studies/devlog/`).
-3. Inter-doc links audited and fixed, treating `.claude-template/` as `.claude/`.
+3. Inter-doc links audited and fixed, treating `.claude-template/` as `.claude/`. Charter (`AI-AUGMENTED-ENGINEERING-CHARTER.md`, ships full) verified coherent with CLAUDE.md Block 3 `§ 12.X` tags.
 
 ### 1.5 Design decisions
 
@@ -45,7 +45,7 @@ Grep refs in `*.md` and `.claude-template/{settings.json,hooks/*}`. Classify (so
 
 ### 1.7 Acceptance criteria
 
-1. `AI-AUGMENTED-ENGINEERING-CHARTER.md` skeleton coherent with Block 3 `[charter § 12.X]` tags; `README.md` and `GOVERNANCE-KIT.md` exist.
+1. `AI-AUGMENTED-ENGINEERING-CHARTER.md` (full charter) coherent with CLAUDE.md Block 3 `[charter § 12.X]` tags; `README.md` and `GOVERNANCE-KIT.md` exist.
 2. `governance/devlog/README.md` exists; CLAUDE.md no longer references `studies/devlog/`; this devlog sits at `governance/devlog/0001-bootstrap-and-audit-references.md`.
 3. § 3 audit table covers every inter-doc ref with decision and fix status.
 4. Zero broken intra-kit links post-fix.
@@ -63,8 +63,8 @@ Within charter scope.
 
 ### 2.1 Steps
 
-1. Commit existing kit files as a single import-as-is commit.
-2. Create new kit-provided files: `README.md`, `GOVERNANCE-KIT.md`, sample `AI-AUGMENTED-ENGINEERING-CHARTER.md`, `governance/devlog/README.md`.
+1. Commit existing kit files (including the full charter) as a single import-as-is commit.
+2. Create new kit-provided files: `README.md`, `GOVERNANCE-KIT.md`, `governance/devlog/README.md`.
 3. Update CLAUDE.md devlog rule (drop `studies/devlog/`); ripple to `CEREMONIES.md`.
 4. Grep refs; build classification table.
 5. Apply per-row decisions: soften/remove out-of-kit refs.
