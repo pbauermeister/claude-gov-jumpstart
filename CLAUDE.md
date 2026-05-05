@@ -49,7 +49,7 @@ None yet.
 - Outcome documents: `NNNN-short-description--outcome-topic.md` (alongside the devlog)
 - Discussion documents: `NNNN-short-description-discussion.md` (and `-discussion-2.md` etc.)
 - Issue numbers are shared across architecture and implementation
-- Devlog folder: `[arch]` and `[impl]` tasks use `architecture/devlog/`; `[gov]` tasks use `governance/devlog/`; `[study]` tasks use `studies/devlog/`
+- Devlog folder: `[gov]` tasks use `governance/devlog/`; `[arch]`, `[impl]`, and `[study]` tasks use `architecture/devlog/`
 - Devlog mandates include a `### Context` field listing predecessor tasks that provide essential context
 - Architecture document history entries reference the motivating task/issue number
 - New conventions must be codified in project files (CLAUDE.md, CEREMONIES.md, or implementation/CLAUDE.md), not only in agent memory. Memory is per-instance; project files are authoritative across all sessions.
