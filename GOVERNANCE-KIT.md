@@ -1,5 +1,7 @@
 # Governance kit — installation and adaptation
 
+> **Scope.** The kit is about engineering **governance** — the way humans and the AI agent collaborate (process, attestation, traceability, ceremonies). It does **not** prescribe technology, architecture, language, framework, or domain. Those remain the host project's choice.
+>
 > **Transient.** This file is a checklist for adapting the kit to a host project. Delete it once the conditions in § 8 are met.
 
 ## 1. What the kit provides
