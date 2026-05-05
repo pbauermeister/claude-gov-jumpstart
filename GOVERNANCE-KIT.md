@@ -1,6 +1,6 @@
 # Governance kit — installation and adaptation
 
-> **Transient.** This file is a checklist for adapting the kit to a host project. Delete it once the conditions in § 6 are met.
+> **Transient.** This file is a checklist for adapting the kit to a host project. Delete it once the conditions in § 8 are met.
 
 ## 1. What the kit provides
 
@@ -18,18 +18,30 @@ In-kit files, intended to be copied or merged into the host project:
 | `README.md`                           | Placeholder repo orientation; replace with the host project's README                          |
 | `GOVERNANCE-KIT.md`                   | This file — bootstrap checklist; delete once fully adapted                                    |
 
-## 2. What the consumer must create
+## 2. Status and known limitations
+
+This kit is **battle-tested on a real project for solo development** (single user, single agent) and is **under constant improvement**.
+
+It has **not yet been validated for team use**. Concrete concerns to verify before adopting in a team setting:
+
+1. **Concurrent governance changes.** Governance improvements (edits to `CLAUDE.md`, `CEREMONIES.md`, the charter) should not be done concurrently. The review-attestation discipline assumes a single author per change at a time; concurrent governance edits would race against each other's review state.
+2. **Per-member agent memory.** Governance improvements should re-surface each team member's agent auto-memory and merge the change requests across members. The current model treats agent memory as a single user's store — there is no convention yet for reconciling cross-member memory drift.
+3. **Concurrent task creation.** The task-creation flow (GH ticket → branch → PR) has not been validated under concurrent GH usage. Branch and devlog filenames use the GH ticket number as their unique key; relying on GitHub's monotonic issue numbering, the design should be safe — but this is untested.
+
+Translation: solo developers can adopt confidently; team adoption requires a pilot.
+
+## 3. What the consumer must create
 
 Each row is a checkbox. Tick it when the artefact exists in the host project and the references in `CLAUDE.md` / `CEREMONIES.md` resolve to it.
 
-### 2.1 Required at install time
+### 3.1 Required at install time
 
 - [ ] **Adapt the charter** at `AI-AUGMENTED-ENGINEERING-CHARTER.md`. The kit ships a **full charter** as a reference baseline — review every section and rewrite to reflect the host project's principles. Cited at `CLAUDE.md:148`, `CEREMONIES.md:232,258`. The charter is meant to be edited, not consumed verbatim.
-- [ ] **Recompile `CLAUDE.md` Block 3 from the adapted charter.** See § 6 — the recompilation procedure is sketched but not fully defined; in particular, merging with the previous Block 3 (so edits made directly into Block 3 since the last compilation are not lost) is currently a manual reconciliation step.
+- [ ] **Recompile `CLAUDE.md` Block 3 from the adapted charter.** See § 7 — the recompilation procedure is sketched but not fully defined; in particular, merging with the previous Block 3 (so edits made directly into Block 3 since the last compilation are not lost) is currently a manual reconciliation step.
 - [ ] **Mount `.claude-template/`** as `.claude/`. Mechanism (copy, symlink, install script) is the host project's call; do not clobber an existing `.claude/`. The hooks reference `.claude/hooks/...`, not `.claude-template/...`.
 - [ ] **`TODO.md`** at repo root — the capture buffer for ideas arising during work. _(Agent memory — `last-weekly-alignment-review`, `last-factoring-review`, conventions, learned patterns — lives in the agent's auto-memory store at `~/.claude/projects/<PID>/memory/`, not in a kit-tracked file. No checkbox needed.)_
 
-### 2.2 Created when their feature is first exercised
+### 3.2 Created when their feature is first exercised
 
 - [ ] **`architecture/ARCHITECTURE.md`** — living architecture reference; created when implementation begins.
 - [ ] **`architecture/input/`** — folder for analysis / design inputs.
@@ -48,7 +60,7 @@ Each row is a checkbox. Tick it when the artefact exists in the host project and
 - [ ] **`governance/scripts/analyse_governance_traces.py`** — effectiveness-report tool; create at first weekly review (`CEREMONIES.md:222`).
 - [ ] **`Makefile`** — at minimum a `test` target (`CEREMONIES.md:48` requires `make test` for implementation closure).
 
-## 3. External tools assumed
+## 4. External tools assumed
 
 The host project's environment must provide these. The kit does not bundle them.
 
@@ -60,19 +72,19 @@ The host project's environment must provide these. The kit does not bundle them.
 - `npm` — package manager for Prettier
 - PlantUML — diagram rendering (`CLAUDE.md:22`)
 
-## 4. External standards referenced
+## 5. External standards referenced
 
 - **RFC 2119** — requirement-strength keywords (MUST, SHOULD, MAY) per `CLAUDE.md:92`.
 
-## 5. Historical anchors
+## 6. Historical anchors
 
 All originating-project anchors (incident numbers, devlog references, work-package codenames) have been softened or removed in this kit. If any survives in your local copy after adaptation, treat it as illustrative rather than navigable.
 
-## 6. Known incomplete procedures
+## 7. Known incomplete procedures
 
 These kit-level workflows are sketched but not fully codified. The consumer takes them on as residual manual work, with care.
 
-### 6.1 Charter recompilation into `CLAUDE.md` Block 3
+### 7.1 Charter recompilation into `CLAUDE.md` Block 3
 
 `CLAUDE.md` Block 2 points at `AI-AUGMENTED-ENGINEERING-CHARTER.md` Appendix A for "when and how to recompile". The trigger and direction are clear; the **merge-with-previous-Block-3 step is not codified**.
 
@@ -88,14 +100,14 @@ Until the procedure is automated:
 
 Recompilation is therefore a multi-step human review, not a one-shot regeneration.
 
-## 7. When to delete this file
+## 8. When to delete this file
 
 Delete `GOVERNANCE-KIT.md` (and remove its mention from `README.md`) when all of the following hold:
 
-1. Every box in § 2.1 is ticked.
+1. Every box in § 3.1 is ticked.
 2. Every reference in `CLAUDE.md` and `CEREMONIES.md` either resolves to a real host-project file or has been deliberately stripped/rewritten as part of adaptation.
 3. The host project's own README has replaced the kit's placeholder.
 4. A fresh grep over the kit's docs surfaces no path that points at an absent artefact.
-5. § 6 procedures have either been formalised (codified workflow committed) or explicitly accepted as residual manual work for the host project.
+5. § 7 procedures have either been formalised (codified workflow committed) or explicitly accepted as residual manual work for the host project.
 
 The kit's purpose is to bootstrap a project into AI-augmented governance. Once the project owns its own conventions, this file is dead weight — delete it and trust the project's own docs.
