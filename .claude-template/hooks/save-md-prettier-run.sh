@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# PostToolUse Edit + Write hook (shared).
+# Runs `prettier --write` on `*.md` files after they are saved.  Uses the
+# prettier binary vendored under implementation/node_modules/ so no global
+# install is required.  Emits a concern-level warning if prettier is
+# missing (fresh clone before `make require`), otherwise silent on
+# success.
+set -euo pipefail
+
+DIR="$(cd "$(dirname "$0")" && pwd)"
+# shellcheck disable=SC1091
+source "$DIR/config.env"
+
+INPUT=$(cat)
+FILE=$(echo "$INPUT" | jq -r .tool_input.file_path)
+
+case "$FILE" in
+    $HOOK_GLOB_MARKDOWN)
+        ROOT=$(git rev-parse --show-toplevel 2>/dev/null || true)
+        [ -n "$ROOT" ] || exit 0
+        PRETTIER="$ROOT/$HOOK_PRETTIER_REL"
+        if [ ! -x "$PRETTIER" ]; then
+            echo "CONCERN: prettier not found at $PRETTIER — *.md files are not being auto-formatted. Run 'make require' to install."
+            exit 0
+        fi
+        "$PRETTIER" --write "$FILE" 2>/dev/null || true
+        ;;
+esac
+
+exit 0
