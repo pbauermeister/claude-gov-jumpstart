@@ -2,8 +2,7 @@
 # SessionStart hook (matcher: startup).
 # Activates the project's Python venv and exports VIRTUAL_ENV + PATH into
 # $CLAUDE_ENV_FILE so the venv survives for the whole session's Bash tool
-# calls.  See MEMORY.md / lessons_claude_code_runtime_quirks.md for the
-# $CLAUDE_ENV_FILE primitive.
+# calls.
 set -euo pipefail
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
