@@ -27,8 +27,7 @@ Each row is a checkbox. Tick it when the artefact exists in the host project and
 - [ ] **Adapt the charter** at `AI-AUGMENTED-ENGINEERING-CHARTER.md`. The kit ships a **full charter** as a reference baseline — review every section and rewrite to reflect the host project's principles. Cited at `CLAUDE.md:148`, `CEREMONIES.md:232,258`. The charter is meant to be edited, not consumed verbatim.
 - [ ] **Recompile `CLAUDE.md` Block 3 from the adapted charter.** See § 6 — the recompilation procedure is sketched but not fully defined; in particular, merging with the previous Block 3 (so edits made directly into Block 3 since the last compilation are not lost) is currently a manual reconciliation step.
 - [ ] **Mount `.claude-template/`** as `.claude/`. Mechanism (copy, symlink, install script) is the host project's call; do not clobber an existing `.claude/`. The hooks reference `.claude/hooks/...`, not `.claude-template/...`.
-- [ ] **`MEMORY.md`** at repo root. Holds `last-weekly-alignment-review` (and later `last-factoring-review`).
-- [ ] **`TODO.md`** at repo root — the capture buffer for ideas arising during work.
+- [ ] **`TODO.md`** at repo root — the capture buffer for ideas arising during work. _(Agent memory — `last-weekly-alignment-review`, `last-factoring-review`, conventions, learned patterns — lives in the agent's auto-memory store at `~/.claude/projects/<PID>/memory/`, not in a kit-tracked file. No checkbox needed.)_
 
 ### 2.2 Created when their feature is first exercised
 
@@ -46,7 +45,6 @@ Each row is a checkbox. Tick it when the artefact exists in the host project and
 - [ ] **`implementation/.venv/bin/activate`** — Python venv (path used by `.claude/hooks/session-start-venv-activate.sh`).
 - [ ] **`implementation/node_modules/.bin/prettier`** — Prettier binary (path used by `.claude/hooks/save-md-prettier-run.sh`).
 - [ ] **`HOWTO-SCRIPTS.md`** — script-language guide (`CLAUDE.md:86`).
-- [ ] **`HOWTO-MEMORY-AUDIT.md`** — memory audit guide (`CEREMONIES.md:142`).
 - [ ] **`governance/scripts/analyse_governance_traces.py`** — effectiveness-report tool; create at first weekly review (`CEREMONIES.md:222`).
 - [ ] **`Makefile`** — at minimum a `test` target (`CEREMONIES.md:48` requires `make test` for implementation closure).
 

@@ -72,7 +72,7 @@ None yet.
 - Always allowed to modify files in this project or in /tmp/ without asking
 - Agent must confirm with user before force-pushing, even when a requested squash implies it
 - PR merge is user's action: agent pushes, user merges — do not run `gh pr merge` unless user explicitly says "merge it" or equivalent
-- **Default for pushed branches: leave history untouched.** Don't rebase and don't pull main's new commits into the task branch. Housekeeping commits on main (TODO.md, MEMORY.md, etc.) almost never need to reach the task branch; final squash-merge at PR time handles integration. The reflex to "keep rebased on latest main" is the root of most force-push friction.
+- **Default for pushed branches: leave history untouched.** Don't rebase and don't pull main's new commits into the task branch. Housekeeping commits on main (TODO.md, etc.) almost never need to reach the task branch; final squash-merge at PR time handles integration. The reflex to "keep rebased on latest main" is the root of most force-push friction.
 - **Exception**: if the branch genuinely needs main's new commits (merge conflict, compile error), `git merge main` onto the task branch — **ask the user first** before running.
 - **`git fetch` before acting on a pushed branch.** `git status` then reports "behind origin by N commits" if origin has moved — a silent prerequisite for every branch-state decision.
 
@@ -305,10 +305,12 @@ Follow `CEREMONIES.md` at these trigger points:
 
 ### Memory management [charter § 12.7]
 
-- Update MEMORY.md after each prompt during semantically intensive sessions (conventions, decisions)
+The agent's session-persistent memory lives outside the project (the agent's auto-memory store, typically `~/.claude/projects/<PID>/memory/`). The kit refers to this as _agent memory_.
+
+- Update agent memory after each prompt during semantically intensive sessions (conventions, decisions)
 - Lower frequency for mechanical tasks
-- Keep MEMORY.md concise; use separate topic files for details
-- Track `last-weekly-alignment-review` date in MEMORY.md
+- Keep the memory index concise; use separate topic files for details
+- Track `last-weekly-alignment-review` date in agent memory
 
 ## Architecture rules [charter § 12.8]
 

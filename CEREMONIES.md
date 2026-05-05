@@ -10,7 +10,7 @@ there. This file is not auto-loaded — the agent reads it explicitly.
 
 Before any work begins on a new task:
 
-1. **Weekly-review offer (preflight)**: check `last-weekly-alignment-review` in `MEMORY.md`. If ≥ 7 days have elapsed AND the offer was not already declined today, offer the weekly review to the user before starting. User may accept (run the review first, then return to this task), defer (proceed with task, offer again next session), or decline (record that the offer was declined today, proceed).
+1. **Weekly-review offer (preflight)**: check `last-weekly-alignment-review` in agent memory. If ≥ 7 days have elapsed AND the offer was not already declined today, offer the weekly review to the user before starting. User may accept (run the review first, then return to this task), defer (proceed with task, offer again next session), or decline (record that the offer was declined today, proceed).
 2. **Git state check**: check for uncommitted changes, untracked files, or other loose state — propose tidying up before proceeding
 3. **GH issue**: ask the user for an existing ticket number; if none, create one with the proper `[gov]`/`[arch]`/`[impl]` prefix
 4. **Branch and devlog**: create the task branch and devlog entry (`<folder>/devlog/NNNN-short-description.md`) [charter § 12.7]
@@ -66,10 +66,9 @@ After the final deliverable:
     - Tests and HOWTO-USE.md are maintained; the demo scenario is not
 11. Forward-looking check: does this output well-serve the next task? Acceptance criteria are backward-looking; this complements them by checking whether the deliverable is a good foundation for successor tasks.
 12. **Operational metrics**: populate the devlog's `## Resource consumption` table (see § Resource consumption below for the format). In addition to tokens and wall time, record per-task counters: pre-commit hook failures, subagent invocations, `/clear` events, memory rotation events, and LOC/files changed (from `git diff main...branch`). Manual estimates are acceptable — precision is not billing-grade.
-13. **Update MEMORY.md Current State**: mark completed tasks, remove stale entries, verify accuracy against actual GH issue states
-14. **Capture new conventions**: if any practice was established or refined during this task, codify it in the appropriate file (CLAUDE.md, CEREMONIES.md, or MEMORY.md)
-15. **User review (non-delegable)** [hook-enforced]: user affixes `- Review: user` attestations and commits — agent must not perform this step
-16. **Finalization**:
+13. **Capture new conventions**: if any practice was established or refined during this task, codify it in CLAUDE.md or CEREMONIES.md (project-stable rules) or in agent memory (session-persistent preferences and learned patterns).
+14. **User review (non-delegable)** [hook-enforced]: user affixes `- Review: user` attestations and commits — agent must not perform this step
+15. **Finalization**:
     - Agent: push branch, ask user to merge
     - User: merge PR (this auto-closes the linked issue via `Closes #N` in the PR description)
     - Agent: delete local branch, checkout `main`, pull
@@ -132,17 +131,17 @@ Fast-path eligibility is a judgement call at task start, not a hook-enforced gat
 
 ## Weekly alignment review
 
-At session start, if ≥1 week since last review (check MEMORY.md for
+At session start, if ≥1 week since last review (check agent memory for
 `last-weekly-alignment-review` date):
 
 1. Propose review to user — ask for confirmation before proceeding
 2. If confirmed:
    - Internal drift assessment against Charter § 12 rules
    - External landscape scan (tools, models, practices)
-   - Memory audit per `HOWTO-MEMORY-AUDIT.md` — tag each memory file, resolve tensions, graduate transfer-candidates, delete redundant cache, verify `MEMORY.md` is under its size limit
+   - Memory audit — review each memory file, resolve tensions, graduate transfer-candidates, delete redundant cache, verify the memory index is under the agent's size limit
    - Verify all `HOWTO*.md` guides are reachable from a `CLAUDE.md` (directly or via an index like `HOWTO-DEVELOP.md`)
    - Remind to run the **Factoring review** ceremony (see § Factoring review below) — schedule or run in the same session if candidates have accumulated
-   - Update `last-weekly-alignment-review` in MEMORY.md
+   - Update `last-weekly-alignment-review` in agent memory
 3. If deferred: offer to create a separate task
 
 ## Factoring review
@@ -161,7 +160,7 @@ Known requirements (to be refined during the first effective ceremony):
 - **Discard rationale**: a candidate may be rejected (e.g. rule-of-three not yet met, indirection cost outweighs gain, scope creep risk) — record the reason under `## Won't` in `architecture/FACTORING-TODO.md`. The rationale is the memory that prevents future reviews from re-investigating the same item.
 - **Process shape** (open questions to resolve during first execution): subagent-assisted scan vs. manual pass; whether the output is a devlog outcome document; whether graduated tasks get bundled or split.
 - **Cadence**: initial default is "alongside the Weekly alignment review when candidates have accumulated". Adjust after the first execution based on candidate-arrival rate and review cost.
-- **Tracking**: when the first factoring review runs, add a `last-factoring-review` date to MEMORY.md alongside `last-weekly-alignment-review`.
+- **Tracking**: when the first factoring review runs, add a `last-factoring-review` entry to agent memory alongside `last-weekly-alignment-review`.
 
 The exact cadence, tooling, and output format will be refined during the first effective Factoring review. This section is a scaffold, not a spec.
 

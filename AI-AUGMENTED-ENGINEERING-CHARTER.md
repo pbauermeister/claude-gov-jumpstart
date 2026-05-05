@@ -1,6 +1,6 @@
 # AI-Augmented Engineering Charter
 
-This charter establishes the principles and rules governing AI-augmented engineering on the this project. Sections 1–11 define principles (the "why"); § 2.12 defines collaboration attitudes (encouraged, not enforced); section 12 defines enforcement rules (the "how"). Rules are compiled into CLAUDE.md for agent runtime use — every rule in this charter is operationally enforced, not aspirational.
+This charter establishes the principles and rules governing AI-augmented engineering on this project. Sections 1–11 define principles (the "why"); § 2.12 defines collaboration attitudes (encouraged, not enforced); section 12 defines enforcement rules (the "how"). Rules are compiled into CLAUDE.md for agent runtime use — every rule in this charter is operationally enforced, not aspirational.
 
 ## 1. General project principles
 
@@ -68,7 +68,7 @@ These principles govern human-AI collaboration on this project.
 
 ## 4. Transparency and attribution
 
-Traceability requires knowing who authored what and who reviewed it.Per-section authorship metadata tracks the primary intellectual driver of each section. Authorship does not change due to normal collaborative interactions (corrections, clarifications); it changes only when one party substantially rewrites content authored by the other.
+Traceability requires knowing who authored what and who reviewed it. Per-section authorship metadata tracks the primary intellectual driver of each section. Authorship does not change due to normal collaborative interactions (corrections, clarifications); it changes only when one party substantially rewrites content authored by the other.
 
 Review attestation is an act of personal accountability: only the reviewer themselves may attest their own review. The agent must not attest reviews on behalf of the user.
 
@@ -251,11 +251,11 @@ Checkpoints:
 - Exploratory tasks: when summarizing findings, transitioning to recommendations
 - Large tasks: at each subtask boundary
 
-**Weekly alignment review** at session start if ≥1 week since last check. Ask confirmation before proceeding. Covers: internal drift assessment + external landscape scan. If deferred, offer to create a separate task. Track last review date in MEMORY.md.
+**Weekly alignment review** at session start if ≥1 week since last check. Ask confirmation before proceeding. Covers: internal drift assessment + external landscape scan. If deferred, offer to create a separate task. Track last review date in agent memory.
 
 **Watchlist reminder** at each task start, remind the user of the active watchlist items so the user can monitor agent behavior on weakly-enforced rules during real work.
 
-_Compiled-rule effectiveness: **weak** — coverage check depends on the agent noticing its own drift (the thing drift impairs); weekly review depends on MEMORY.md being accurate. Watchlist reminder is reliable (mechanical trigger at task start)._
+_Compiled-rule effectiveness: **weak** — coverage check depends on the agent noticing its own drift (the thing drift impairs); weekly review depends on agent memory being accurate. Watchlist reminder is reliable (mechanical trigger at task start)._
 
 ### 12.6. Task retrospective rules [§ 8]
 
@@ -267,7 +267,7 @@ _Compiled-rule effectiveness: **moderate** — agent reliably prompts for retros
 
 1. **Iterative workflow.** AI generates → human reviews → AI corrects → commit. No step skips human review.
 2. **Devlog discipline.** Every task gets a devlog entry (`<folder>/devlog/NNNN-*.md`) and a GitHub issue. Post-hoc updates to closed devlogs are allowed to keep information current; each update must be marked: `[Updated DATE: summary, task number if relevant]`. Governance updates shall be back-ported to related devlogs and marked the same way.
-3. **Memory management.** Update MEMORY.md after each prompt during semantically intensive sessions. Lower frequency for mechanical tasks. Keep concise; use topic files for details.
+3. **Memory management.** Update agent memory after each prompt during semantically intensive sessions. Lower frequency for mechanical tasks. Keep the memory index concise; use topic files for details. (_Agent memory_ = the agent's session-persistent auto-memory store, typically `~/.claude/projects/<PID>/memory/`.)
 4. **Commit messages.** Short, imperative sentences. Trailer aligned with authorship.
 5. **Acceptance criteria.** Tasks must define acceptance criteria in their devlog mandate before execution begins.
 

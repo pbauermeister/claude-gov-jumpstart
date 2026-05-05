@@ -88,7 +88,7 @@ Out of scope: real charter authoring; HOWTO-\*, `ARCHITECTURE.md`, `governance/s
 - Anonymisation (CKW/AXSA endpoints, branch examples, model versions) done during pre-implementation rather than step 5; step 5 then only handled residual narrative anchors.
 - `README.md` was tracked from the initial commit; overwritten in place rather than newly created.
 - Block 3 recompilation gap surfaced during writing of GOVERNANCE-KIT.md and captured as new § 6.
-- Post-attestation policy update: `MEMORY.md` is not a kit concept (agent memory lives in `~/.claude/projects/<PID>/memory/`). § 2.2 and `.claude-template/hooks/session-start-venv-activate.sh` scrubbed of `MEMORY.md` references; § 2 review reset to pending — user reattest needed before merge. Broader scrub across CLAUDE.md / CEREMONIES.md / charter / GOVERNANCE-KIT.md (12+ residual refs encoding memory-management procedures) is conceptual rework deferred to a follow-up task.
+- Post-attestation policy update: `MEMORY.md` is not a kit concept. Project-tracked `MEMORY.md` is replaced kit-wide by _agent memory_ — the agent's session-persistent auto-memory store at `~/.claude/projects/<PID>/memory/`. Sweep replaced 16 refs across CLAUDE.md, CEREMONIES.md, AI-AUGMENTED-ENGINEERING-CHARTER.md, GOVERNANCE-KIT.md, and `.claude-template/hooks/session-start-venv-activate.sh`. Closure-step "Update MEMORY.md Current State" dropped (subsequent steps renumbered). HOWTO-MEMORY-AUDIT.md ref removed (memory-audit ceremony adapts to agent memory). § 2 review reset to pending — user reattest needed before merge.
 
 ### 3.2 File inventory
 
