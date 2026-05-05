@@ -205,7 +205,7 @@ Every section in devlogs and charter documents must carry a metadata block immed
 
 where `<model>` is the agent's model name + version (e.g. `Claude Opus 4.7`).
 
-_Compiled-rule effectiveness: **reliable** — mechanical rules with unambiguous triggers. Automatable via pre-commit hooks (#8)._
+_Compiled-rule effectiveness: **reliable** — mechanical rules with unambiguous triggers. Automatable via pre-commit hooks._
 
 ### 12.2. Task nature rules [§ 5]
 
@@ -220,7 +220,7 @@ The agent must identify the task nature (exploratory or execution) and communica
 | Fact/inference separation      | Required           | Required                |
 | References                     | Required           | Best-effort             |
 
-_Compiled-rule effectiveness: **moderate** — identification is reliable; calibration (when to enforce strictly vs relax) requires judgment. See #9._
+_Compiled-rule effectiveness: **moderate** — identification is reliable; calibration (when to enforce strictly vs relax) requires judgment._
 
 ### 12.3. Agent communication rules [§ 6.1]
 
@@ -239,7 +239,7 @@ _Compiled-rule effectiveness: **moderate overall; weak for 2 and 4** — flatter
 3. **Scope warning.** Flag tasks too vague, broad, or monolithic for reliable execution. Suggest decomposition.
 4. **Proportionality warning.** Flag when a proposed solution is more complex than the problem warrants. Especially when layers or documents accumulate incrementally.
 
-_Compiled-rule effectiveness: **moderate overall; weak for 4** — review requests (1) and scope warnings (3) work but may miss items; proportionality (4) is weak because the agent tends to design the over-engineering before catching it. See #9._
+_Compiled-rule effectiveness: **moderate overall; weak for 4** — review requests (1) and scope warnings (3) work but may miss items; proportionality (4) is weak because the agent tends to design the over-engineering before catching it._
 
 ### 12.5. Self-monitoring rules [§ 7]
 
@@ -253,7 +253,7 @@ Checkpoints:
 
 **Weekly alignment review** at session start if ≥1 week since last check. Ask confirmation before proceeding. Covers: internal drift assessment + external landscape scan. If deferred, offer to create a separate task. Track last review date in MEMORY.md.
 
-**Watchlist reminder** at each task start, remind the user of the active watchlist items (devlog 0007 § 3.2) so the user can monitor agent behavior on weakly-enforced rules during real work.
+**Watchlist reminder** at each task start, remind the user of the active watchlist items so the user can monitor agent behavior on weakly-enforced rules during real work.
 
 _Compiled-rule effectiveness: **weak** — coverage check depends on the agent noticing its own drift (the thing drift impairs); weekly review depends on MEMORY.md being accurate. Watchlist reminder is reliable (mechanical trigger at task start)._
 
@@ -271,7 +271,7 @@ _Compiled-rule effectiveness: **moderate** — agent reliably prompts for retros
 4. **Commit messages.** Short, imperative sentences. Trailer aligned with authorship.
 5. **Acceptance criteria.** Tasks must define acceptance criteria in their devlog mandate before execution begins.
 
-_Compiled-rule effectiveness: **mixed** — devlog discipline (2) and commit messages (4) are reliable (mechanical); iterative workflow (1) is weak (agent cannot enforce human review); memory management (3) is moderate (judgment on frequency). See #8 for automating 2, 4._
+_Compiled-rule effectiveness: **mixed** — devlog discipline (2) and commit messages (4) are reliable (mechanical); iterative workflow (1) is weak (agent cannot enforce human review); memory management (3) is moderate (judgment on frequency)._
 
 ### 12.8. Architecture rules [§ 10]
 

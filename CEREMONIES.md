@@ -23,7 +23,7 @@ Before any work begins on a new task:
 8. Input documents: mandate must list input documents and links relevant to the task [charter § 12.7]
 9. **Test plan** (execution tasks): mandate must include a test plan — what will be tested, how, and at what scale. Exploratory tasks are exempt.
 10. **Test strategy discussion** (all tasks, at mandate time): discuss and capture the test strategy independently from implementation choices — what will convince us the outcome is correct, which invariants matter, which failure modes deserve coverage. The discussion is exploratory and upstream of step 9's concrete plan; it probes testability early so the plan has more to work with. **No hard gate**: if no specific strategy emerges at mandate time, record "no specific strategy surfaced at mandate time" and proceed.
-11. Watchlist reminder: remind the user of the active watchlist (devlog 0007 § 3.2) [charter § 12.5]
+11. Watchlist reminder: remind the user of the active watchlist [charter § 12.5]
 12. Coverage check: confirm operating within charter scope [charter § 12.5]
 13. **Commit and review**: commit the devlog with the mandate, ask the user to review
 14. **Mandate approval gate**: the user must affix their review attestation on the mandate section and commit it before any implementation begins. Standard-flow default; the fast-path carve-out for mechanical tasks with pre-existing scope (see § Fast-path task flow) shifts all three attestations to closure without dropping them. The user bears accountability and may have requirements the agent did not anticipate.
@@ -259,7 +259,7 @@ Two-step tracing:
 
 ## Operational metrics report
 
-Aggregates the per-task `## Resource consumption` data (header `- Opened:` / `- Closed:` dates, token/time table, counter table — instrumentation codified in #138) into cross-task rollups.
+Aggregates the per-task `## Resource consumption` data (header `- Opened:` / `- Closed:` dates, token/time table, counter table — instrumentation defined in this kit) into cross-task rollups.
 Complements the Governance effectiveness report: traces tell _what fired_; operational metrics tell _how the project breathes_.
 
 ### Cadence
@@ -278,7 +278,7 @@ Proposed at each weekly alignment review alongside the Governance effectiveness 
 
 ### Preconditions
 
-- At least ~5 tasks closed under the #138 instrumentation since the last report (otherwise the aggregate is noise).
+- At least ~5 tasks closed under the kit's resource-consumption instrumentation since the last report (otherwise the aggregate is noise).
 - If fewer, the review records the fact and defers to the next cycle.
 
 ### Output

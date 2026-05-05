@@ -66,17 +66,9 @@ The host project's environment must provide these. The kit does not bundle them.
 
 - **RFC 2119** — requirement-strength keywords (MUST, SHOULD, MAY) per `CLAUDE.md:92`.
 
-## 5. Historical anchors to soften
+## 5. Historical anchors
 
-The kit's bundled docs reference incident numbers from the originating project. These don't resolve in a fresh install. Treat them as illustrative; the audit task that produced this kit may have softened or removed them.
-
-| Anchor              | Where                                  | Subject                                  |
-| ------------------- | -------------------------------------- | ---------------------------------------- |
-| `devlog 0007 § 3.2` | `CEREMONIES.md:26`                     | Watchlist origin                         |
-| `#138`              | `CEREMONIES.md:262, 281`               | Resource-consumption instrumentation     |
-| `#148`              | `CLAUDE.md:84, 179`                    | Ensure-venv reframing                    |
-| `#158`              | `CLAUDE.md:242`                        | Closure fill-in                          |
-| `#162`, `#174`      | `architecture/devlog/CLAUDE.md:97`     | Subsection numbering                     |
+All originating-project anchors (incident numbers, devlog references, work-package codenames) have been softened or removed in this kit. If any survives in your local copy after adaptation, treat it as illustrative rather than navigable.
 
 ## 6. Known incomplete procedures
 
